@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Quaternion rotation;
     private Rigidbody rb;
+    private float horizontalInput;
+    private float verticalInput;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -23,21 +25,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        Movement();
+        Rotation();
+        Animation();
+    }
+
+    private void Movement()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
         //moveDirection = new Vector3(horizontalInput, 0, verticalInput);
         moveDirection.Set(horizontalInput, 0, verticalInput);
         moveDirection.Normalize();
-
+    }
+    private void Rotation()
+    {
+        Vector3 lookDirection = Vector3.RotateTowards(transform.forward, moveDirection, turnSpeed * Time.deltaTime, 0);
+        rotation = Quaternion.LookRotation(lookDirection);
+    }
+    private void Animation()
+    {
         bool hasVerticalInput =  !Mathf.Approximately(verticalInput, 0f) ;
         bool hasHorizontalInput = !Mathf.Approximately(horizontalInput, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         animator.SetBool(IS_WALKING, isWalking);
 
-        Vector3 lookDirection = Vector3.RotateTowards(transform.forward, moveDirection, turnSpeed * Time.deltaTime, 0);
-        rotation = Quaternion.LookRotation(lookDirection);
     }
-
     private void OnAnimatorMove()
     {
             rb.MovePosition(rb.position + moveDirection* animator.deltaPosition.magnitude);
