@@ -53,7 +53,7 @@ public class GameEnding : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out PlayerMovement player))
+        if (other.TryGetComponent(out Player player) && player.HasKey)
         {
             isPlayerAtExit = true;
         }
