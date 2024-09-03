@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float turnSpeed;
     
+    private AudioSource audioSource;
     private Vector3 moveDirection;
     private Animator animator;
     private Quaternion rotation;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -49,7 +51,23 @@ public class PlayerMovement : MonoBehaviour
         bool hasHorizontalInput = !Mathf.Approximately(horizontalInput, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         animator.SetBool(IS_WALKING, isWalking);
+        
+        PlayFootsteps(isWalking);
+    }
 
+    private void PlayFootsteps(bool isWalking)
+    {
+        if (isWalking)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
     }
     private void OnAnimatorMove()
     {
