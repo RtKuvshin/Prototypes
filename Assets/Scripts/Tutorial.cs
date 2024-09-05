@@ -8,18 +8,12 @@ public class Tutorial : MonoBehaviour
     public event Action<TutorialSteps> OnStepChanged;
     
     public static Tutorial Instance { get; private set; }
+    public bool IsInit { get; private set; }
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        Instance = this;
+        IsInit = true;
     }
 
     private void Start()
