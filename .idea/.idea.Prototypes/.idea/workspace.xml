@@ -5,14 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26034bf3-70b3-4339-9652-01df69b18ee1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MessageController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MessageController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UnityTechnologies/Settings/URP_Asset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UnityTechnologies/Settings/URP_Asset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Prototypes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Prototypes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Base.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Base.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Resource1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Resource1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Resource2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Resource2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/TheMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/TheMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuUIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MenuUIHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIMainScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIMainScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-HighQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP-HighQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,11 +35,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/70/dbf38d20/Ray.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/99/37f7604f/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/44c555c8e7704b01b3778d8db4ae902827800/e4/68bd6122/Animator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Key.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MenuController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Observer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tutorial.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/WaypointPatrol.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2kNfd92cnteXlKfKl3t1HvQm0JO" />
   <component name="ProjectViewState">
@@ -116,7 +122,9 @@
       <workItem from="1724767647639" duration="4562000" />
       <workItem from="1724943384266" duration="3399000" />
       <workItem from="1725369472438" duration="5159000" />
-      <workItem from="1725545118312" duration="740000" />
+      <workItem from="1725545118312" duration="911000" />
+      <workItem from="1725548432855" duration="1981000" />
+      <workItem from="1725972453626" duration="4000000" />
     </task>
     <servers />
   </component>
@@ -127,37 +135,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Player.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Users\retun\Desktop\Unity Projects\Prototypes\Assets\Scripts\Player.cs" initialLine="23" containingFunctionPresentation="Method 'OnTriggerEnter'">
-            <startOffsets>
-              <option value="522" />
-            </startOffsets>
-            <endOffsets>
-              <option value="571" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Tutorial.cs</url>
-          <line>25</line>
-          <properties documentPath="C:\Users\retun\Desktop\Unity Projects\Prototypes\Assets\Scripts\Tutorial.cs" initialLine="31" containingFunctionPresentation="Method 'ChangeStep'">
-            <startOffsets>
-              <option value="530" />
-            </startOffsets>
-            <endOffsets>
-              <option value="561" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
