@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="26034bf3-70b3-4339-9652-01df69b18ee1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Prototypes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Prototypes/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuUIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MenuUIHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ResourcePile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ResourcePile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Optimization/Scripts/OptimUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Optimization/Scripts/OptimUnit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +111,7 @@
       <workItem from="1725548432855" duration="1981000" />
       <workItem from="1725972453626" duration="4228000" />
       <workItem from="1726151824317" duration="2801000" />
-      <workItem from="1726579720322" duration="1292000" />
+      <workItem from="1726579720322" duration="3132000" />
     </task>
     <servers />
   </component>
