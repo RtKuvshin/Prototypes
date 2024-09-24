@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float rotationSpeed;
     private void Update()
     {
         
@@ -33,5 +34,6 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(inputVector.x, 0 , inputVector.y);
         transform.position += moveDirection * Time.deltaTime * moveSpeed;
         //Debug.Log(inputVector);
+        transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
     }
 }
