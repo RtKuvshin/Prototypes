@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed;
     private void Update()
     {
+        
         Vector2 inputVector = new Vector2(0, 0);
 
         if (Input.GetKey(KeyCode.W))
@@ -19,12 +21,17 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            inputVector.x = 1;
+            inputVector.x = -1;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            inputVector.x = -1;
+            inputVector.x = 1;
         }
-        Debug.Log(inputVector);
+
+        inputVector = inputVector.normalized;
+
+        Vector3 moveDirection = new Vector3(inputVector.x, 0 , inputVector.y);
+        transform.position += moveDirection * Time.deltaTime * moveSpeed;
+        //Debug.Log(inputVector);
     }
 }
