@@ -7,13 +7,21 @@ using UnityEngine.InputSystem;
 public class GameInput : MonoBehaviour
 {
     public event Action OnInteractAction; 
+    public event Action OnInteractAlternateAction;
+    
     private PlayerInputSystem playerInputSystem;
-
+    
     private void Awake()
     {
         playerInputSystem = new PlayerInputSystem();
         playerInputSystem.Player.Enable();
         playerInputSystem.Player.Interact.performed += InteractOnperformed;
+        playerInputSystem.Player.InteractAlternate.performed += InteractAlternateOnperformed;
+    }
+
+    private void InteractAlternateOnperformed(InputAction.CallbackContext obj)
+    {
+        OnInteractAlternateAction?.Invoke();
     }
 
     private void InteractOnperformed(InputAction.CallbackContext obj)
