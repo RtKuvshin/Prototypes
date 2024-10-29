@@ -7,6 +7,8 @@ using System;
 public class CuttingCounter : BaseCounter
 {
     public event EventHandler<OnProgressChangeEventArgs> OnProgressChange;
+    
+    public event Action OnCut;
 
     public class OnProgressChangeEventArgs : EventArgs
     {
@@ -48,6 +50,7 @@ public class CuttingCounter : BaseCounter
         if (this.HasKitchenObject() && HasRecipeWithInput(this.GetKitchenObject().GetKitchenObjectSO()))
         {
             cuttingProgress++;
+            OnCut?.Invoke();
             CuttingRecipeSO cuttingRecipeSo = GetCuttingRecipeSoWithInput(this.GetKitchenObject().GetKitchenObjectSO());
             
             OnProgressChange?.Invoke(this, new OnProgressChangeEventArgs
