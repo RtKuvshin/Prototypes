@@ -12,12 +12,22 @@ public class ContainerCounter : BaseCounter
 
     public override void Interact(Player player)
     {
-        if (player.HasKitchenObject() == false)
+        if (player.HasKitchenObject())
+        {
+            /*if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+            {
+                if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                {
+                    //KitchenObject.SpawnKitchenObject(_kitchenObjectSo, player);
+                    OnPlayerGrabbedObject?.Invoke();
+                }
+            }*/
+        }
+        else
         {
             KitchenObject.SpawnKitchenObject(_kitchenObjectSo, player);
             OnPlayerGrabbedObject?.Invoke();
         }
-        
     }
     
    
