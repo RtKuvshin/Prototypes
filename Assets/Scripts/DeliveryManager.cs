@@ -9,6 +9,9 @@ public class DeliveryManager : MonoBehaviour
 {
     public static DeliveryManager Instance { get; private set; }
     
+    public event Action OnRecipeSpawned; 
+    public event Action OnRecipeCompleted; 
+
     [SerializeField] private RecipeListSO _recipeListSo;
 
     private List<RecipeSO> waitingRecipeSOList = new List<RecipeSO>();
@@ -34,7 +37,8 @@ public class DeliveryManager : MonoBehaviour
             {
                 RecipeSO waitingRecipeSO = _recipeListSo.recipeSOList[Random.Range(0, _recipeListSo.recipeSOList.Count)];
                 waitingRecipeSOList.Add(waitingRecipeSO);
-                Debug.Log(waitingRecipeSO.recipeName);
+                
+                OnRecipeSpawned?.Invoke();
             }
         }
     }
@@ -69,12 +73,18 @@ public class DeliveryManager : MonoBehaviour
                 if (plateContentsMatchesRecipe)
                 {
                     waitingRecipeSOList.RemoveAt(i);
-                    Debug.Log("player delivered the correct recipe!");
+                    
+                    OnRecipeCompleted?.Invoke();
                     return;
                 }
                 
             }
         }
-        Debug.Log("player didn't deliver the correct recipe!");
+        
+    }
+
+    public List<RecipeSO> GetWaitingRecipeSOList()
+    {
+        return waitingRecipeSOList;
     }
 }
