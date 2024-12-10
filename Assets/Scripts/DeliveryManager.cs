@@ -10,7 +10,10 @@ public class DeliveryManager : MonoBehaviour
     public static DeliveryManager Instance { get; private set; }
     
     public event Action OnRecipeSpawned; 
-    public event Action OnRecipeCompleted; 
+    public event Action OnRecipeCompleted;
+
+    public event Action OnRecipeSuccess; 
+    public event Action OnRecipeFailed; 
 
     [SerializeField] private RecipeListSO _recipeListSo;
 
@@ -75,12 +78,13 @@ public class DeliveryManager : MonoBehaviour
                     waitingRecipeSOList.RemoveAt(i);
                     
                     OnRecipeCompleted?.Invoke();
+                    OnRecipeSuccess?.Invoke();
                     return;
                 }
                 
             }
         }
-        
+        OnRecipeFailed?.Invoke();
     }
 
     public List<RecipeSO> GetWaitingRecipeSOList()
