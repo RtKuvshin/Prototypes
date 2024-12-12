@@ -1,0 +1,65 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class KitchenGameManager : MonoBehaviour
+{
+    private enum State
+    {
+        WaitingToStart,
+        CountdownToStart,
+        GamePlaying,
+        GameOver
+    }
+
+    public static KitchenGameManager Instance { get; private set; }
+    
+    private State _state;
+    private float waitingToStartTimer = 3f;
+    private float countdownToStartTimer = 3f;
+    private float gamePlayingTimer = 10f;
+
+    private void Awake()
+    {
+        Instance = this;
+        _state = State.WaitingToStart;
+    }
+
+    private void Update()
+    {
+        switch (_state)
+        {
+           case State.WaitingToStart:
+               waitingToStartTimer -= Time.deltaTime;
+               if (waitingToStartTimer < 0)
+               {
+                   _state = State.CountdownToStart;
+               }
+               break;
+           case State.CountdownToStart:
+               countdownToStartTimer -= Time.deltaTime;
+               if (countdownToStartTimer < 0)
+               {
+                   _state = State.GamePlaying;
+               }
+               break;
+           case State.GamePlaying:
+               gamePlayingTimer -= Time.deltaTime;
+               if (gamePlayingTimer < 0)
+               {
+                   _state = State.GameOver;
+               }
+               break;
+           case State.GameOver:
+               break;
+           
+        }
+        Debug.Log(_state);
+    }
+
+    public bool IsGamePlaying()
+    {
+        return _state == State.GamePlaying;
+    }
+}
