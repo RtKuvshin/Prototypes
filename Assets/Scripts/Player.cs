@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class Player : MonoBehaviour, IKitchenObjectParent
@@ -19,7 +19,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Transform kitchenObjectHoldPoint;
-    [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
 
     private bool isWalking;
@@ -41,8 +40,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void Start()
     {
-        gameInput.OnInteractAction += GameInputOnInteractAction;
-        gameInput.OnInteractAlternateAction += GameInputOnInteractAlternateAction;
+        GameInput.Instance.OnInteractAction += GameInputOnInteractAction;
+        GameInput.Instance.OnInteractAlternateAction += GameInputOnInteractAlternateAction;
     }
 
     private void GameInputOnInteractAlternateAction()
@@ -77,7 +76,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private void HandleInteractions()
     {
         
-        Vector2 inputVector = gameInput.GetMovementVector();
+        Vector2 inputVector = GameInput.Instance.GetMovementVector();
         Vector3 moveDirection = new Vector3(inputVector.x, 0 , inputVector.y);
 
         if (moveDirection != Vector3.zero) lastInteractDirection = moveDirection;
@@ -104,7 +103,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     }
     private void HandleMovement()
     {
-        Vector2 inputVector = gameInput.GetMovementVector();
+        Vector2 inputVector = GameInput.Instance.GetMovementVector();
         Vector3 moveDirection = new Vector3(inputVector.x, 0 , inputVector.y);
 
         float moveDistance = Time.deltaTime * moveSpeed;
