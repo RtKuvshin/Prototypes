@@ -8,14 +8,17 @@ using Random = UnityEngine.Random;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
+
+    private const string SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
     
     [SerializeField] private AudioClipRefsSO _audioClipRefsSo;
 
-    private float volume = 1f;
+    private float volume;
 
     private void Awake()
     {
         Instance = this;
+        volume = PlayerPrefs.GetFloat(SOUND_EFFECTS_VOLUME, 1f);
     }
 
     private void Start()
@@ -85,6 +88,9 @@ public class SoundManager : MonoBehaviour
         {
             volume = 0;
         }
+        
+        PlayerPrefs.SetFloat(SOUND_EFFECTS_VOLUME, volume);
+        PlayerPrefs.Save();
     }
 
     public float GetVolume()

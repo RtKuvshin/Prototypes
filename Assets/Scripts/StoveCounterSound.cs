@@ -24,6 +24,8 @@ public class StoveCounterSound : MonoBehaviour
 
         if (playSound)
         {
+            var volume =SoundManager.Instance.GetVolume();
+            _audioSource.volume = volume;
             _audioSource.Play();
         }
         else
