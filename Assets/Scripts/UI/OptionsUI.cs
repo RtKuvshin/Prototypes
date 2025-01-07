@@ -9,11 +9,20 @@ public class OptionsUI : MonoBehaviour
 {
     public static OptionsUI Instance { get; private set; }
     
+    [SerializeField] private GameObject rebindKeyObject;
     [SerializeField] private Button sfxButton;
     [SerializeField] private Button musicButton;
     [SerializeField] private Button closeButton;
     [SerializeField] private TextMeshProUGUI sfxText;
     [SerializeField] private TextMeshProUGUI musicText;
+
+    [SerializeField] private ButtonWithText moveUpButton;
+    [SerializeField] private ButtonWithText moveDownButton;
+    [SerializeField] private ButtonWithText moveLeftButton;
+    [SerializeField] private ButtonWithText moveRightButton;
+    [SerializeField] private ButtonWithText interactButton;
+    [SerializeField] private ButtonWithText interactAltButton;
+    [SerializeField] private ButtonWithText pauseButton;
 
     private void Awake()
     {
@@ -29,28 +38,65 @@ public class OptionsUI : MonoBehaviour
             MusicManager.Instance.ChangeVolume();
             UpdateVisual();
         }));
-        closeButton.onClick.AddListener(Hide);
+        closeButton.onClick.AddListener(() =>
+        {
+            Hide(gameObject);
+        });
+        
+        moveUpButton.Initialize();
+        moveDownButton.Initialize();
+        moveLeftButton.Initialize();
+        moveRightButton.Initialize();
+        interactButton.Initialize();
+        interactAltButton.Initialize();
+        pauseButton.Initialize();
+        
+        moveUpButton.Button.onClick.AddListener(() => RebindBinding(GameInput.Binding.MoveUp));
+        moveDownButton.Button.onClick.AddListener(() => RebindBinding(GameInput.Binding.MoveDown));
+        moveLeftButton.Button.onClick.AddListener(() => RebindBinding(GameInput.Binding.MoveLeft));
+        moveRightButton.Button.onClick.AddListener(() => RebindBinding(GameInput.Binding.MoveRight));
+        interactButton.Button.onClick.AddListener(() => RebindBinding(GameInput.Binding.Interact));
+        interactAltButton.Button.onClick.AddListener(() => RebindBinding(GameInput.Binding.InteractAlternate));
+        pauseButton.Button.onClick.AddListener(() => RebindBinding(GameInput.Binding.Pause));
     }
 
-    private void UpdateVisual()
+    private void UpdateVisual() 
     {
         sfxText.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10);
         musicText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10);
+        
+        moveUpButton.SetText(GameInput.Instance.GetBindingText(GameInput.Binding.MoveUp));
+        moveDownButton.SetText(GameInput.Instance.GetBindingText(GameInput.Binding.MoveDown));
+        moveLeftButton.SetText(GameInput.Instance.GetBindingText(GameInput.Binding.MoveLeft));
+        moveRightButton.SetText(GameInput.Instance.GetBindingText(GameInput.Binding.MoveRight));
+        interactButton.SetText(GameInput.Instance.GetBindingText(GameInput.Binding.Interact));
+        interactAltButton.SetText(GameInput.Instance.GetBindingText(GameInput.Binding.InteractAlternate));
+        pauseButton.SetText(GameInput.Instance.GetBindingText(GameInput.Binding.Pause));
     }
 
     private void Start()
     {
-        KitchenGameManager.Instance.OnGameUnpaused += Hide;
+        KitchenGameManager.Instance.OnGameUnpaused += () => Hide(gameObject);
         UpdateVisual();
-        Hide();
+        Hide(rebindKeyObject);
+        Hide(gameObject);
     }
-    public void Show()
+    public void Show(GameObject window)
     {
-        gameObject.SetActive(true);
-        
+        window.SetActive(true);
     }
-    private void Hide()
+    private void Hide(GameObject window)
     {
-        gameObject.SetActive(false);
+        window.SetActive(false);
+    }
+
+    private void RebindBinding(GameInput.Binding binding)
+    {
+        Show(rebindKeyObject);
+        GameInput.Instance.RebindBinding(binding, () =>
+        {
+            UpdateVisual();
+            Hide(rebindKeyObject);
+        }); 
     }
 }
