@@ -20,7 +20,7 @@ public class KitchenGameManager : MonoBehaviour
     public event Action OnGameUnpaused;
 
     private State _state;
-    private float countdownToStartTimer = 5f;
+    private float countdownToStartTimer = 1f;
     private float gamePlayingTimerMax = 120f;
     private float gamePlayingTimer;
     private bool isGamePaused;
@@ -35,6 +35,10 @@ public class KitchenGameManager : MonoBehaviour
     {
         GameInput.Instance.OnPauseAction+= GameInputOnPauseAction;
         GameInput.Instance.OnInteractAction += GameInputOnInteractAction;
+        
+        //not for long
+        _state = State.CountdownToStart;
+        OnStateChanged?.Invoke();
     }
 
     private void GameInputOnInteractAction()
