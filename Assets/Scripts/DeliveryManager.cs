@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DeliveryManager : MonoBehaviour
+public class DeliveryManager : NetworkBehaviour
 {
     public static DeliveryManager Instance { get; private set; }
     
@@ -36,17 +37,27 @@ public class DeliveryManager : MonoBehaviour
     {
         while (true)
         {
+            while (!IsServer)
+            {
+                yield return null;
+            }
             yield return new WaitForSeconds(spawnRecipeTimer);
             if (KitchenGameManager.Instance.IsGamePlaying() && waitingRecipeSOList.Count < waitingRecipeMax)
             {
-                RecipeSO waitingRecipeSO = _recipeListSo.recipeSOList[Random.Range(0, _recipeListSo.recipeSOList.Count)];
-                waitingRecipeSOList.Add(waitingRecipeSO);
-                
-                OnRecipeSpawned?.Invoke();
+                int waitingRecipeSOIndex = Random.Range(0, _recipeListSo.recipeSOList.Count);
+                SpawnNewRecipeClientRpc(waitingRecipeSOIndex);
             }
         }
     }
 
+    [ClientRpc]
+    private void SpawnNewRecipeClientRpc(int recipeIndex)
+    {
+        RecipeSO waitingRecipeSO = _recipeListSo.recipeSOList[recipeIndex];
+        waitingRecipeSOList.Add(waitingRecipeSO);
+        
+        OnRecipeSpawned?.Invoke();
+    }
     public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
     {
         for (int i = 0; i < waitingRecipeSOList.Count; i++)
