@@ -21,7 +21,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void SpawnKitchenObjectServerRpc(int kitchenObjectSoIndex,
+    private void SpawnKitchenObjectServerRpc(int kitchenObjectSoIndex,
         NetworkObjectReference kitchenObjectNetworkObjectReference)
     {
         KitchenObjectSO kitchenObjectSo = GetKitchenObjectSoFromIndex(kitchenObjectSoIndex);
