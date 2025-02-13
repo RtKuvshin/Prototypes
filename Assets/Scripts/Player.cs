@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using Random = System.Random;
 
 public class Player : NetworkBehaviour, IKitchenObjectParent
 {
@@ -26,6 +27,8 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Transform kitchenObjectHoldPoint;
     [SerializeField] private LayerMask countersLayerMask;
+    [SerializeField] private LayerMask collisionsLayerMask;
+    [SerializeField] private List<Vector3> spawnPositionList;
 
     private bool isWalking;
     private Vector3 lastInteractDirection;
@@ -44,6 +47,9 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
         {
             LocalInstance = this;
         }
+
+        transform.position = spawnPositionList[(int)OwnerClientId];
+        
         OnAnyPlayerSpawned!.Invoke(); 
     }
 
@@ -117,13 +123,12 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
         float moveDistance = Time.deltaTime * moveSpeed;
         float playerWidth = 0.7f;
         float playerHeight = 2f;
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position+ Vector3.up * playerHeight, playerWidth, moveDirection, moveDistance);
+        bool canMove = !Physics.BoxCast(transform.position,  Vector3.one * playerWidth,  moveDirection, Quaternion.identity, moveDistance, collisionsLayerMask);
 
         if (!canMove)
         {
             Vector3 moveDirectionX = new Vector3(moveDirection.x, 0, 0).normalized;
-            canMove = (moveDirection.x < -0.5f || moveDirection.x > 0.5f)   && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
-                playerWidth, moveDirectionX, moveDistance);
+            canMove = (moveDirection.x < -0.5f || moveDirection.x > 0.5f)   && !Physics.BoxCast(transform.position,  Vector3.one * playerWidth,  moveDirectionX, Quaternion.identity, moveDistance, collisionsLayerMask);
 
             if (canMove)
             {
@@ -132,8 +137,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
             else
             {
                 Vector3 moveDirectionZ = new Vector3(0, 0, moveDirection.z).normalized;
-                canMove = (moveDirection.z < -0.5f || moveDirection.z > 0.5f) && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
-                    playerWidth, moveDirectionZ, moveDistance);
+                canMove = (moveDirection.z < -0.5f || moveDirection.z > 0.5f) && !Physics.BoxCast(transform.position,  Vector3.one * playerWidth,  moveDirectionZ, Quaternion.identity, moveDistance, collisionsLayerMask);
                 if (canMove)
                 {
                     moveDirection = moveDirectionZ;
