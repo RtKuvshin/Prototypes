@@ -29,18 +29,18 @@ public class GamePausedUI : MonoBehaviour
 
     private void Start()
     {
-        KitchenGameManager.Instance.OnGamePaused += KitchenGameManagerOnGamePaused;
-        KitchenGameManager.Instance.OnGameUnpaused += KitchenGameManagerOnGameUnpaused;
+        KitchenGameManager.Instance.OnLocalGamePaused += KitchenLocalGameManagerOnLocalGamePaused;
+        KitchenGameManager.Instance.OnLocalGameUnpaused += KitchenLocalGameManagerOnLocalGameUnpaused;
         
         Hide();
     }
 
-    private void KitchenGameManagerOnGameUnpaused()
+    private void KitchenLocalGameManagerOnLocalGameUnpaused()
     {
         Hide();
     }
 
-    private void KitchenGameManagerOnGamePaused()
+    private void KitchenLocalGameManagerOnLocalGamePaused()
     {
         Show();
     }
