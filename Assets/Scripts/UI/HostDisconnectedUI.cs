@@ -7,8 +7,15 @@ using UnityEngine.UI;
 
 public class HostDisconnectedUI : MonoBehaviour
 {
-    [SerializeField] private Button restartButton;
     [SerializeField] private Button mainMenuButton;
+
+    private void Awake()
+    {
+        mainMenuButton.onClick.AddListener((() =>
+        {
+            Loader.Load(Loader.Scene.MainMenuScene);
+        }));
+    }
 
     private void Show()
     {
@@ -32,5 +39,10 @@ public class HostDisconnectedUI : MonoBehaviour
         {
             Show();
         }
+    }
+
+    private void OnDestroy()
+    {
+        NetworkManager.Singleton.OnClientDisconnectCallback -= NetworkManagerOnClientDisconnectCallback;
     }
 }

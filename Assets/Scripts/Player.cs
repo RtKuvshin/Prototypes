@@ -29,7 +29,8 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private LayerMask collisionsLayerMask;
     [SerializeField] private List<Vector3> spawnPositionList;
-
+    [SerializeField] private PlayerVisual _playerVisual;
+    
     private bool isWalking;
     private Vector3 lastInteractDirection;
     private BaseCounter _selectedCounter;
@@ -39,6 +40,9 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     {
         GameInput.Instance.OnInteractAction += GameInputOnInteractAction;
         GameInput.Instance.OnInteractAlternateAction += GameInputOnInteractAlternateAction;
+
+        PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromClientId(OwnerClientId);
+        _playerVisual.SetPlayerColor(KitchenGameMultiplayer.Instance.GetPlayerColor(playerData.colorId));
     }
 
     public override void OnNetworkSpawn()
@@ -48,7 +52,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
             LocalInstance = this;
         }
 
-        transform.position = spawnPositionList[(int)OwnerClientId];
+        transform.position = spawnPositionList[KitchenGameMultiplayer.Instance.GetPlayerDataIndexFromClientId(OwnerClientId)];
         
         OnAnyPlayerSpawned!.Invoke();
         if (IsServer)
