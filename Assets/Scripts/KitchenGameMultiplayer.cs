@@ -78,7 +78,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
     private void ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest arg1, NetworkManager.ConnectionApprovalResponse arg2)
     {
-        Debug.Log(NetworkManager.Singleton.ConnectedClientsIds.Count);
+        //Debug.Log(NetworkManager.Singleton.ConnectedClientsIds.Count);
         if (SceneManager.GetActiveScene().name != Loader.Scene.CharacterSelectScene.ToString())
         {
             arg2.Approved = false;

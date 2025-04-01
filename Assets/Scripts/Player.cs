@@ -54,7 +54,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
 
         transform.position = spawnPositionList[KitchenGameMultiplayer.Instance.GetPlayerDataIndexFromClientId(OwnerClientId)];
         
-        OnAnyPlayerSpawned!.Invoke();
+        OnAnyPlayerSpawned?.Invoke();
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManagerOnClientDisconnectCallback;
