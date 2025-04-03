@@ -33,4 +33,10 @@ public class LobbyCreateUI : Visible
     {
         Hide();
     }
+
+    public void CustomShow()
+    {
+        Show();
+        createPublicButton.Select();
+    }
 }

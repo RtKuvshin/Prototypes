@@ -27,7 +27,7 @@ public class LobbyUI : MonoBehaviour
         }));
         createLobbyButton.onClick.AddListener((() =>
         {
-            _lobbyCreateUI.Show();
+            _lobbyCreateUI.CustomShow();
         }));
         quickJoinButton.onClick.AddListener((() =>
         {

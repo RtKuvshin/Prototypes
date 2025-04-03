@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class KitchenGameMultiplayer : NetworkBehaviour
 {
     public static KitchenGameMultiplayer Instance { get; private set; }
+    public static bool playMultiplayer;
     public const int MAX_PLAYER_AMOUNT = 4;
     private const string PLAYER_NAME_MULTIPLAYER = "PlayerNameMultiplayer"; 
 
@@ -42,6 +43,15 @@ public class KitchenGameMultiplayer : NetworkBehaviour
         playerName = PlayerPrefs.GetString(PLAYER_NAME_MULTIPLAYER, "PlayerName " + Random.Range(0, 1000));
         playerDataNetworkList = new NetworkList<PlayerData>();
         playerDataNetworkList.OnListChanged += PlayerDataNetworkListOnListChanged;
+    }
+
+    private void Start()
+    {
+        if (!playMultiplayer)
+        {
+            StartHost();
+            Loader.LoadNetwork(Loader.Scene.GameScene); 
+        }
     }
 
     private void PlayerDataNetworkListOnListChanged(NetworkListEvent<PlayerData> changeevent)
